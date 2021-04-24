@@ -1,0 +1,88 @@
+body {
+  margin: 0;
+}
+
+.loading-mask {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.loading-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 98px;
+}
+
+.loading-dot {
+  position: relative;
+  display: inline-block;
+  width: 64px;
+  height: 64px;
+  font-size: 64px;
+  transform: rotate(45deg);
+  animation: antRotate 1.2s infinite linear;
+}
+
+.loading-dot-item {
+  position: absolute;
+  display: block;
+  width: 28px;
+  height: 28px;
+  background-color: #1890ff;
+  border-radius: 100%;
+  transform: scale(0.75);
+  transform-origin: 50% 50%;
+  opacity: 0.3;
+  animation: antSpinMove 1s infinite linear alternate;
+}
+
+.loading-dot-item:nth-child(1) {
+  top: 0;
+  left: 0;
+}
+
+.loading-dot-item:nth-child(2) {
+  top: 0;
+  right: 0;
+  animation-delay: 0.4s;
+}
+
+.loading-dot-item:nth-child(3) {
+  right: 0;
+  bottom: 0;
+  animation-delay: 0.8s;
+}
+
+.loading-dot-item:nth-child(4) {
+  bottom: 0;
+  left: 0;
+  animation-delay: 1.2s;
+}
+
+@keyframes antRotate {
+  to {
+    transform: rotate(405deg);
+  }
+}
+
+@keyframes antRotate {
+  to {
+    transform: rotate(405deg);
+  }
+}
+
+@keyframes antSpinMove {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes antSpinMove {
+  to {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,21 @@
+@import './theme/inject.scss';
+
+// :root {
+//   @each $key, $value in $colors {
+//     @include generate-color($colors, $key);
+//   }
+//   #{get-var(color-background)}: #{$background-color};
+//   #{get-var(color-text)}: #{$text-color};
+// }
+
+@each $theme, $map in $themes {
+  :root[data-theme='#{$theme}'] {
+    @each $key, $value in $map {
+      #{get-var(#{$key})}: map-get($map, $key);
+    }
+  }
+}
+
+@import './default.scss';
+@import './light.scss';
+@import './dark.scss';

@@ -1,0 +1,20 @@
+/* 主题色变量 */
+$--color-primary: #1890ff;
+
+/* icon 字体路径变量，必需 */
+$--font-path: "~element-ui/lib/theme-chalk/fonts";
+
+/* 引入全部默认样式 */
+@import "~element-ui/packages/theme-chalk/src/index";
+
+/* 按需引入用到的组件的scss文件和基础scss文件 */
+// @import '~element-ui/packages/theme-chalk/src/base.scss';
+// @import '~element-ui/packages/theme-chalk/src/steps.scss';
+// @import '~element-ui/packages/theme-chalk/src/step.scss';
+// @import '~element-ui/packages/theme-chalk/src/tabs.scss';
+// @import '~element-ui/packages/theme-chalk/src/tab-pane.scss';
+
+:export {
+  /* stylelint-disable property-no-unknown */
+  themecolor: $--color-primary;
+}
