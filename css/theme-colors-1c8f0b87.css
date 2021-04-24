@@ -1,7 +1,7 @@
-.img-checkbox-item .img-checkbox-selectIcon[data-v-c165b608]{color:#1890ff}
+.img-checkbox-item .img-checkbox-selectIcon[data-v-2b4c8500]{color:#1890ff}
 .tags-view-container-smooth .el-tabs__item.is-active,.tags-view-container-smooth .el-tabs__item.is-active:hover{color:#1890ff;background:#e8f4ff}
 .tags-view-container-smart .el-tabs__item.is-active{color:#1890ff;background:#e8f4ff}
-.tags-view-container-smart .el-tabs__item:hover{background:#e8f4ff;color:#1890ff}
+.tags-view-container-smart .el-tabs__item:hover{color:#1890ff;background:#e8f4ff}
 .tags-view-container-smart .el-tabs__item:after{background-color:#1890ff}
 :root[data-theme=light]{--admin-pro-menu-text-color:#1890ff;--admin-pro-menu-hover-text-color:#1890ff;--admin-pro-menu-active-background-color:#e8f4ff}
 :root[data-theme=dark]{--admin-pro-menu-active-background-color:#1890ff}
@@ -158,6 +158,6 @@
 ::-webkit-scrollbar-thumb{background:#1890ff}
 ::-webkit-scrollbar-track{background:#74bcff}
 #nprogress .bar{background:#1890ff!important}
-.container .main .tab .prefix-icon[data-v-28a2ffcf]{color:#1890ff}
-.container .main .tab a[data-v-28a2ffcf]{color:#1890ff}
+.container .main .tab .prefix-icon[data-v-312b4449]{color:#1890ff}
+.container .main .tab a[data-v-312b4449]{color:#1890ff}
 .loading-dot-item{ background-color: #1890ff}

@@ -1,6 +1,7 @@
 body {
   margin: 0;
 }
+
 .loading-mask {
   display: flex;
   flex-direction: column;
@@ -47,34 +48,29 @@ body {
 .loading-dot-item:nth-child(2) {
   top: 0;
   right: 0;
-  -webkit-animation-delay: 0.4s;
   animation-delay: 0.4s;
 }
 
 .loading-dot-item:nth-child(3) {
   right: 0;
   bottom: 0;
-  -webkit-animation-delay: 0.8s;
   animation-delay: 0.8s;
 }
 
 .loading-dot-item:nth-child(4) {
   bottom: 0;
   left: 0;
-  -webkit-animation-delay: 1.2s;
   animation-delay: 1.2s;
 }
 
 @keyframes antRotate {
   to {
-    -webkit-transform: rotate(405deg);
     transform: rotate(405deg);
   }
 }
 
-@-webkit-keyframes antRotate {
+@keyframes antRotate {
   to {
-    -webkit-transform: rotate(405deg);
     transform: rotate(405deg);
   }
 }
@@ -85,7 +81,7 @@ body {
   }
 }
 
-@-webkit-keyframes antSpinMove {
+@keyframes antSpinMove {
   to {
     opacity: 1;
   }
