@@ -4,4 +4,4 @@ ports:
 
 tasks:
   - init: yarn
-    command: yarn dev
+    command: yarn serve
