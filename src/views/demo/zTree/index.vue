@@ -1,7 +1,7 @@
 <template>
   <div>
     <z-tree
-    style="width: 350px; height: 700px; margin: 0 auto; overflow: auto;"
+      style="width: 350px; height: 700px; margin: 0 auto; overflow: auto"
       :setting="setting"
       :nodes="nodes"
       @onClick="onClick"
@@ -31,62 +31,62 @@ const simpleData = [
   { id: 22, pid: 2, name: '随意勾选 2-2', open: true },
   { id: 221, pid: 22, name: '随意勾选 2-2-1', checked: true },
   { id: 222, pid: 22, name: '随意勾选 2-2-2' },
-  { id: 23, pid: 2, name: '随意勾选 2-3' }
+  { id: 23, pid: 2, name: '随意勾选 2-3' },
 ]
 const dataQueue = [bigData.data, simpleData]
 export default {
   components: { zTree },
-  data () {
+  data() {
     return {
       showIndex: 0,
       ztreeObj: null,
       setting: {
         setting: {
           check: {
-            enable: true
+            enable: true,
           },
           data: {
             key: {
-              name: 'name'
+              name: 'name',
             },
             simpleData: {
               enable: true,
               idKey: 'id',
-              pIdKey: 'pid'
+              pIdKey: 'pid',
               // rootPId: 0
-            }
+            },
           },
           view: {
             showIcon: false,
             addHoverDom: this.addHoverDom,
-            removeHoverDom: this.removeHoverDom
-          }
-        }
-      }
+            removeHoverDom: this.removeHoverDom,
+          },
+        },
+      },
     }
   },
   computed: {
     nodes: function () {
       return dataQueue[this.showIndex]
-    }
+    },
   },
-  created () {},
+  created() {},
   methods: {
-    addHoverDom (treeid, treeNode) {
+    addHoverDom(treeid, treeNode) {
       const item = document.getElementById(`${treeNode.tId}_a`)
       if (item && !item.querySelector('.tree_extra_btn')) {
         const btn = document.createElement('sapn')
         btn.id = `${treeid}_${treeNode.id}_btn`
         btn.classList.add('tree_extra_btn')
         btn.innerText = '删除'
-        btn.addEventListener('click', e => {
+        btn.addEventListener('click', (e) => {
           e.stopPropagation()
           this.clickRemove(treeNode)
         })
         item.appendChild(btn)
       }
     },
-    removeHoverDom (treeid, treeNode) {
+    removeHoverDom(treeid, treeNode) {
       const item = document.getElementById(`${treeNode.tId}_a`)
       if (item) {
         const btn = item.querySelector('.tree_extra_btn')
@@ -95,7 +95,7 @@ export default {
         }
       }
     },
-    clickRemove (treeNode) {
+    clickRemove(treeNode) {
       console.log('remove', treeNode)
       this.ztreeObj && this.ztreeObj.removeNode(treeNode)
     },
@@ -115,8 +115,8 @@ export default {
     update: function () {
       // 更新示例数据
       this.showIndex = this.showIndex === 0 ? 1 : 0
-    }
-  }
+    },
+  },
 }
 </script>
 

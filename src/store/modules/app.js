@@ -5,24 +5,24 @@ export default {
     animate: {
       disabled: false,
       name: 'lightSpeed',
-      direction: 'left'
-    }
+      direction: 'left',
+    },
   },
   mutations: {
     SET_DEVICE: (state, isMobile) => {
       state.isMobile = isMobile
     },
-    SET_ANIMATE (state, animate) {
+    SET_ANIMATE(state, animate) {
       state.animate = animate
-    }
+    },
   },
   actions: {
-    setDevice ({ commit }, isMobile) {
+    setDevice({ commit }, isMobile) {
       commit('SET_DEVICE', isMobile)
     },
-    setAnimate ({ commit }, animate) {
+    setAnimate({ commit }, animate) {
       commit('SET_ANIMATE', animate)
-    }
+    },
   },
-  getters: { }
+  getters: {},
 }

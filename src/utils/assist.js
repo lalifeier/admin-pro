@@ -1,4 +1,4 @@
-export function typeOf (obj) {
+export function typeOf(obj) {
   const { toString } = Object.prototype
   const map = {
     '[object Boolean]': 'boolean',
@@ -10,12 +10,12 @@ export function typeOf (obj) {
     '[object RegExp]': 'regExp',
     '[object Undefined]': 'undefined',
     '[object Null]': 'null',
-    '[object Object]': 'object'
+    '[object Object]': 'object',
   }
   return map[toString.call(obj)]
 }
 
-export function isEmpty (data) {
+export function isEmpty(data) {
   const type = typeOf(data)
   switch (type) {
     case 'array':
@@ -30,7 +30,7 @@ export function isEmpty (data) {
   }
 }
 
-export function deepClone (data) {
+export function deepClone(data) {
   const t = typeOf(data)
   let o
 

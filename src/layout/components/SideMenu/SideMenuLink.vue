@@ -11,33 +11,33 @@ export default {
   props: {
     to: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   computed: {
-    isExternal () {
+    isExternal() {
       return validateURL(this.to)
     },
-    type () {
+    type() {
       if (this.isExternal) {
         return 'a'
       }
       return 'router-link'
-    }
+    },
   },
   methods: {
-    linkProps (to) {
+    linkProps(to) {
       if (this.isExternal) {
         return {
           href: to,
           target: '_blank',
-          rel: 'noopener'
+          rel: 'noopener',
         }
       }
       return {
-        to: to
+        to: to,
       }
-    }
-  }
+    },
+  },
 }
 </script>

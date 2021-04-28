@@ -1,6 +1,6 @@
 <template>
   <div class="setting-item">
-    <h3 class="title">{{title}}</h3>
+    <h3 class="title">{{ title }}</h3>
     <slot></slot>
   </div>
 </template>
@@ -11,9 +11,9 @@ export default {
   props: {
     title: {
       type: String,
-      default: ''
-    }
-  }
+      default: '',
+    },
+  },
 }
 </script>
 

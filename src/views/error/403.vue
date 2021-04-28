@@ -6,15 +6,15 @@
 import Error from '@/components/Error'
 export default {
   components: { Error },
-  data () {
+  data() {
     return {
       config: {
         img: '403.svg',
         title: '403',
-        desc: '抱歉，登录超时啦！'
-      }
+        desc: '抱歉，登录超时啦！',
+      },
     }
-  }
+  },
 }
 </script>
 

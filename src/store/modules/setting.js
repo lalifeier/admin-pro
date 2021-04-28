@@ -5,14 +5,14 @@ export default {
   state: {
     theme: {
       mode: 'light',
-      color: variables.themeColor
+      color: variables.themeColor,
     },
     menuType: 'side',
     sidebar: true,
     tagsView: true,
     wideType: 'flow',
     fixedHeader: true,
-    fixedSide: true
+    fixedSide: true,
   },
   mutations: {
     SET_THEME: (state, theme) => {
@@ -35,7 +35,7 @@ export default {
     },
     SET_FIXED_SIDE: (state, isFixed) => {
       state.fixedSide = isFixed
-    }
+    },
   },
   actions: {
     setTheme: ({ commit }, theme) => {
@@ -62,7 +62,7 @@ export default {
     },
     setFixedSide: ({ commit }, isFixed) => {
       commit('SET_FIXED_SIDE', isFixed)
-    }
+    },
   },
-  getters: {}
+  getters: {},
 }

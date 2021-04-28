@@ -16,9 +16,10 @@
     "dll:build": "yarn dll && yarn build",
     "generateAnalyzFile": "vue-cli-service build --mode production --report-json",
     "analyz": "webpack-bundle-analyzer --port 8888 ./dist/report.json",
-    "lint": "vue-cli-service lint",
-    "lint:css": "stylelint **/*.{html,vue,css,sass,scss,less}",
-    "inspect": "vue-cli-service inspect",
+    "lint": "yarn lint:js && yarn lint:style && yarn lint:prettier",
+    "lint:js": "eslint --fix src/**/*.{js,jsx,ts,tsx,vue}",
+    "lint:prettier": "prettier --write src/**/*.{js,jsx,ts,tsx,css,less,scss,vue,html,md,json}",
+    "lint:style": "stylelint --fix src/**/*.{html,vue,css,sass,scss,less}",
     "commit": "git-cz",
     "release": "standard-version"
   },
@@ -30,11 +31,15 @@
   },
   "lint-staged": {
     "src/**/*.{js,vue}": [
-      "vue-cli-service lint",
+      "eslint --fix",
       "git add"
     ],
-    "*.{html,vue,css,sass,scss,less}": [
+    "src/**/*.{html,vue,css,sass,scss,less}": [
       "stylelint --fix",
+      "git add"
+    ],
+    "src/**/*.{js,jsx,ts,tsx,css,less,scss,vue,html,md,json}": [
+      "prettier --write",
       "git add"
     ]
   },
@@ -66,11 +71,9 @@
     "@commitlint/cli": "^12.1.1",
     "@commitlint/config-conventional": "^12.1.1",
     "@vue/cli-plugin-babel": "~4.5.12",
-    "@vue/cli-plugin-eslint": "~4.5.12",
     "@vue/cli-plugin-router": "~4.5.12",
     "@vue/cli-plugin-vuex": "~4.5.12",
     "@vue/cli-service": "~4.5.12",
-    "@vue/eslint-config-standard": "^6.0.0",
     "add-asset-html-webpack-plugin": "^3.2.0",
     "babel-eslint": "^10.1.0",
     "babel-plugin-component": "^1.1.1",
@@ -81,9 +84,8 @@
     "compression-webpack-plugin": "6.1.1",
     "cz-conventional-changelog": "^3.2.0",
     "eslint": "^7.24.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^5.1.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-vue": "^7.9.0",
     "hard-source-webpack-plugin": "^0.13.1",
     "husky": "4.3.8",
@@ -91,6 +93,7 @@
     "lodash-webpack-plugin": "^0.11.6",
     "mockjs": "^1.1.0",
     "postcss-px-to-viewport": "^1.1.1",
+    "prettier": "^2.2.1",
     "sass": "^1.32.10",
     "sass-loader": "10.1.1",
     "speed-measure-webpack-plugin": "^1.5.0",

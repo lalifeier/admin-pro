@@ -26,15 +26,17 @@ import LRUCache from 'lru-cache'
 //   }
 // }
 
-function isCacheLike (cache) {
+function isCacheLike(cache) {
   return !!(
-    cache.set &&
-    cache.get &&
-    cache.del &&
-    // cache.clear &&
-    typeof cache.get === 'function' &&
-    typeof cache.set === 'function' &&
-    typeof cache.del === 'function'
+    (
+      cache.set &&
+      cache.get &&
+      cache.del &&
+      // cache.clear &&
+      typeof cache.get === 'function' &&
+      typeof cache.set === 'function' &&
+      typeof cache.del === 'function'
+    )
     // typeof cache.clear === 'function'
   )
 }
@@ -42,20 +44,18 @@ function isCacheLike (cache) {
 const FIVE_MINUTES = 1000 * 60 * 5
 const CAPACITY = 100
 
-export function cacheAdapterEnhancer (adapter, options) {
+export function cacheAdapterEnhancer(adapter, options) {
   const {
     maxAge,
     enabledByDefault = true,
     cacheFlag = 'cache',
     // defaultCache = MemoryCache
-    defaultCache = new LRUCache({ maxAge: FIVE_MINUTES, max: CAPACITY })
+    defaultCache = new LRUCache({ maxAge: FIVE_MINUTES, max: CAPACITY }),
   } = options
   return (config) => {
     const { method, forceUpdate } = config
     const useCache =
-      config[cacheFlag] !== undefined && config[cacheFlag] !== null
-        ? config[cacheFlag]
-        : enabledByDefault
+      config[cacheFlag] !== undefined && config[cacheFlag] !== null ? config[cacheFlag] : enabledByDefault
     if (method === 'get' && useCache) {
       const cache = isCacheLike(useCache) ? useCache : defaultCache
       const requestKey = generateReqKey(config)

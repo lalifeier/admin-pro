@@ -17,9 +17,12 @@ export const constantRoutes = [
     component: layout,
     children: [
       {
-        path: 'index', name: 'index', meta: { title: '首页', icon: 'dashboard' }, component: () => import('@/views/index/index')
-      }
-    ]
+        path: 'index',
+        name: 'index',
+        meta: { title: '首页', icon: 'dashboard' },
+        component: () => import('@/views/index/index'),
+      },
+    ],
   },
   // 刷新页面 必须保留
   {
@@ -27,11 +30,11 @@ export const constantRoutes = [
     name: 'refresh',
     hidden: true,
     component: {
-      beforeRouteEnter (to, from, next) {
+      beforeRouteEnter(to, from, next) {
         next((vm) => vm.$router.replace(from.fullPath))
       },
-      render: (h) => h()
-    }
+      render: (h) => h(),
+    },
   },
   // 页面重定向 必须保留
   {
@@ -39,17 +42,17 @@ export const constantRoutes = [
     name: 'redirect',
     hidden: true,
     component: {
-      beforeRouteEnter (to, from, next) {
+      beforeRouteEnter(to, from, next) {
         next((vm) => vm.$router.replace(JSON.parse(from.params.route)))
       },
-      render: (h) => h()
-    }
+      render: (h) => h(),
+    },
   },
   {
     path: '/login',
     name: 'login',
     hidden: true,
-    component: () => import('@/views/login/index')
+    component: () => import('@/views/login/index'),
   },
   {
     path: '/link',
@@ -57,29 +60,38 @@ export const constantRoutes = [
     children: [
       {
         path: github,
-        meta: { title: 'github', icon: 'link' }
-      }
-    ]
+        meta: { title: 'github', icon: 'link' },
+      },
+    ],
   },
   {
     path: '/demo',
     component: layout,
     meta: {
-      title: 'demo'
+      title: 'demo',
     },
     children: [
       // {
       //   path: 'index', name: 'index', meta: { title: 'demo' }, component: () => import('@/views/demo/index')
       // },
       {
-        path: 'zTree', name: 'index', meta: { title: 'zTree' }, component: () => import('@/views/demo/zTree')
+        path: 'zTree',
+        name: 'index',
+        meta: { title: 'zTree' },
+        component: () => import('@/views/demo/zTree'),
       },
       {
-        path: 'file', name: 'index', meta: { title: 'file' }, component: () => import('@/views/demo/file')
+        path: 'file',
+        name: 'index',
+        meta: { title: 'file' },
+        component: () => import('@/views/demo/file'),
       },
       {
-        path: 'tooltip', name: 'tooltip', meta: { title: 'tooltip' }, component: () => import('@/views/demo/tooltip')
-      }
-    ]
-  }
+        path: 'tooltip',
+        name: 'tooltip',
+        meta: { title: 'tooltip' },
+        component: () => import('@/views/demo/tooltip'),
+      },
+    ],
+  },
 ]

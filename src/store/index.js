@@ -33,7 +33,7 @@ const modules = modulesFiles.keys().reduce((modules, modulePath) => {
 
 const store = new Vuex.Store({
   modules,
-  getters
+  getters,
   // plugins: [vuexCookie.plugin, vuexLocal.plugin]
 })
 

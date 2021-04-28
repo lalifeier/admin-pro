@@ -1,43 +1,43 @@
 import request from '@/utils/request'
 
-export function register (data) {
+export function register(data) {
   return request({
     url: '/user/register',
     method: 'post',
-    data
+    data,
   })
 }
 
-export function login (data) {
+export function login(data) {
   return request({
     url: '/user/login',
     method: 'post',
-    data
+    data,
   })
 }
 
-export function logout () {
+export function logout() {
   return request({
     url: '/user/logout',
-    method: 'post'
+    method: 'post',
   })
 }
 
-export function getUserInfo (data) {
+export function getUserInfo(data) {
   return request({
     url: '/user/getUserInfo',
     method: 'get',
-    data
+    data,
   })
 }
 
-export function test (data) {
+export function test(data) {
   return request({
     url: '/user/getUserInfo',
     method: 'get',
     data,
     // showLoading: true,
     // retryTimes: 5
-    cache: true
+    cache: true,
   })
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="sys-color  primary">
+  <div class="sys-color primary">
     <p>Hello world</p>
     <section>
       <p>Hello world</p>
@@ -11,9 +11,7 @@
 </template>
 
 <script>
-export default {
-
-}
+export default {}
 </script>
 
 <style lang="scss" scoped>

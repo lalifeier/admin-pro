@@ -1,7 +1,7 @@
 <template>
   <header class="layout-header" :class="{ 'fixed-header': fixedHeader }" :style="fixedHeaderStyle">
     <div v-if="isSide || isMobile" class="global-header">
-      <span class="logo" v-if="isMobile">
+      <span v-if="isMobile" class="logo">
         <img src="@/assets/img/logo.svg" alt="logo" />
       </span>
       <div class="global-header-trigger" @click="handleCollapse">
@@ -61,48 +61,48 @@ import { mapGetters } from 'vuex'
 
 export default {
   components: { Screenfull, Setting, HeaderAvatar, Breadcrumb, TagsView, HeaderMenu },
+  data() {
+    return {
+      title,
+    }
+  },
   computed: {
     ...mapGetters(['menuType', 'sidebar', 'tagsView', 'wideType', 'fixedHeader', 'isMobile']),
-    isSide () {
+    isSide() {
       return this.menuType === 'side'
     },
-    isWide () {
+    isWide() {
       return this.menuType === 'head' && this.wideType === 'wide'
     },
-    sideMenuWidth () {
+    sideMenuWidth() {
       return this.sidebar ? '208px' : '48px'
     },
-    fixedHeaderStyle () {
+    fixedHeaderStyle() {
       return {
         padding: 0,
-        width: (this.isSide && this.fixedHeader && !this.isMobile) ? `calc(100% - ${this.sideMenuWidth})` : '100%',
+        width: this.isSide && this.fixedHeader && !this.isMobile ? `calc(100% - ${this.sideMenuWidth})` : '100%',
         height: this.showTagsView ? '96px' : null,
         zIndex: 9,
-        right: this.fixedHeader ? 0 : null
+        right: this.fixedHeader ? 0 : null,
       }
     },
-    showTagsView () {
+    showTagsView() {
       return this.isSide && this.tagsView
-    }
+    },
   },
-  data () {
-    return {
-      title
-    }
-  },
-  created () {},
+  created() {},
   methods: {
-    handleRefresh () {
+    handleRefresh() {
       // localStorage.clear()
       // sessionStorage.clear()
     },
-    handleCollapse () {
+    handleCollapse() {
       if (this.isMobile) {
         this.$emit('onShowSideMenuDrawer')
       } else {
         this.$store.dispatch('setting/setSideBar')
       }
-    }
-  }
+    },
+  },
 }
 </script>

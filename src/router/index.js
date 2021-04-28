@@ -13,28 +13,29 @@ import { routerMode, routerWhiteList, progressBar } from '@/config'
 
 // fix vue-router NavigationDuplicated
 const VueRouterPush = VueRouter.prototype.push
-VueRouter.prototype.push = function push (location) {
-  return VueRouterPush.call(this, location).catch(err => err)
+VueRouter.prototype.push = function push(location) {
+  return VueRouterPush.call(this, location).catch((err) => err)
 }
 const VueRouterReplace = VueRouter.prototype.replace
-VueRouter.prototype.replace = function replace (location) {
-  return VueRouterReplace.call(this, location).catch(err => err)
+VueRouter.prototype.replace = function replace(location) {
+  return VueRouterReplace.call(this, location).catch((err) => err)
 }
 
 Vue.use(VueRouter)
 
-const createRouter = (routes = []) => new VueRouter({
-  // base: process.env.BASE_URL,
-  mode: routerMode,
-  scrollBehavior: () => ({
-    y: 0
-  }),
-  routes
-})
+const createRouter = (routes = []) =>
+  new VueRouter({
+    // base: process.env.BASE_URL,
+    mode: routerMode,
+    scrollBehavior: () => ({
+      y: 0,
+    }),
+    routes,
+  })
 
 const router = createRouter(constantRoutes)
 
-export function resetRouter (routes = []) {
+export function resetRouter(routes = []) {
   router.matcher = createRouter(routes).matcher
 }
 

@@ -7,20 +7,10 @@
       @tab-remove="handleRemoveTag"
       @contextmenu.prevent.native="openContextMenu($event)"
     >
-      <el-tab-pane
-        v-for="item in visitedViews"
-        :label="item.title"
-        :key="item.path"
-        :name="item.path"
-      >
-      </el-tab-pane>
+      <el-tab-pane v-for="item in visitedViews" :key="item.path" :label="item.title" :name="item.path"> </el-tab-pane>
     </el-tabs>
 
-    <ul
-      v-show="contextMenuVisible"
-      :style="{ left: left + 'px', top: top + 'px' }"
-      class="contextmenu"
-    >
+    <ul v-show="contextMenuVisible" :style="{ left: left + 'px', top: top + 'px' }" class="contextmenu">
       <li @click="refreshSelectedTag">刷新</li>
       <li @click="closeSelectedTag">关闭</li>
       <li @click="closeOthersTags">关闭其他</li>
@@ -35,48 +25,48 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'TagsView',
-  data () {
+  data() {
     return {
       selectedTag: {},
       affixTags: [],
       activeTag: '',
       contextMenuVisible: false,
       top: 0,
-      left: 0
+      left: 0,
     }
   },
   computed: {
-    ...mapGetters(['permission_routes', 'visitedViews'])
+    ...mapGetters(['permission_routes', 'visitedViews']),
   },
   watch: {
-    $route () {
+    $route() {
       this.addTags()
       this.moveToCurrentTag()
     },
-    contextMenuVisible (value) {
+    contextMenuVisible(value) {
       if (this.contextMenuVisible) {
         document.body.addEventListener('click', this.closeContextMenu)
       } else {
         document.body.removeEventListener('click', this.closeContextMenu)
       }
-    }
+    },
   },
-  mounted () {
+  mounted() {
     this.initTags()
     this.addTags()
     this.moveToCurrentTag()
   },
   methods: {
-    filterAffixTags (routes, basePath = '/') {
+    filterAffixTags(routes, basePath = '/') {
       let tags = []
-      routes.forEach(route => {
+      routes.forEach((route) => {
         if (route.meta && route.meta.affix) {
           const tagPath = path.resolve(basePath, route.path)
           tags.push({
             fullPath: tagPath,
             path: tagPath,
             name: route.name,
-            meta: { ...route.meta }
+            meta: { ...route.meta },
           })
         }
         if (route.children) {
@@ -88,7 +78,7 @@ export default {
       })
       return tags
     },
-    initTags () {
+    initTags() {
       this.affixTags = this.filterAffixTags(this.permission_routes)
       for (const tag of this.affixTags) {
         // Must have tag name
@@ -97,51 +87,51 @@ export default {
         }
       }
     },
-    addTags () {
+    addTags() {
       const { path } = this.$route
       if (path) {
         this.$store.dispatch('tagsView/addView', this.$route)
       }
     },
-    moveToCurrentTag () {
+    moveToCurrentTag() {
       const { path } = this.$route
       this.$nextTick(() => {
         this.activeTag = path
       })
     },
-    handleClickTag (tag) {
+    handleClickTag(tag) {
       this.$router.push({ path: tag.name })
     },
-    openContextMenu (e) {
-      this.selectedTag = this.visitedViews.filter(item => item.path === this.activeTag)[0]
+    openContextMenu(e) {
+      this.selectedTag = this.visitedViews.filter((item) => item.path === this.activeTag)[0]
       this.left = e.clientX
       this.top = e.clientY
       this.contextMenuVisible = true
     },
-    closeContextMenu () {
+    closeContextMenu() {
       this.contextMenuVisible = false
     },
-    handleRemoveTag (tag) {
-      const view = this.visitedViews.filter(item => item.path === tag)[0]
+    handleRemoveTag(tag) {
+      const view = this.visitedViews.filter((item) => item.path === tag)[0]
       this.$store.dispatch('tagsView/delView', view)
     },
-    closeSelectedTag () {
+    closeSelectedTag() {
       this.$store.dispatch('tagsView/delView', this.selectedTag)
     },
-    refreshSelectedTag () {
+    refreshSelectedTag() {
       this.$store.dispatch('tagsView/delCachedView', this.selectedTag).then(() => {
         this.$router.push('/refresh')
       })
     },
-    closeOthersTags () {
+    closeOthersTags() {
       this.$router.push(this.selectedTag)
       this.$store.dispatch('tagsView/delOthersViews', this.selectedTag)
     },
-    closeAllTags () {
+    closeAllTags() {
       this.$store.dispatch('tagsView/delAllViews')
       this.$router.push({ name: 'index' })
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -277,12 +267,8 @@ export default {
         width: 0;
         height: 2px;
         background-color: #1890ff;
-        transition:
-          all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1),
-          border 0s,
-          color 0.1s,
-          font-size 0s;
-        content: "";
+        transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1), border 0s, color 0.1s, font-size 0s;
+        content: '';
       }
 
       &:hover::after {

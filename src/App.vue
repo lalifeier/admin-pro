@@ -14,23 +14,22 @@ import { title } from '@/config'
 export default {
   name: 'App',
   computed: {
-    ...mapGetters(['isMobile'])
-  },
-  created () {
-    this.setHtmlTitle()
-    enquireScreen(isMobile => this.$store.dispatch('app/setDevice', isMobile))
+    ...mapGetters(['isMobile']),
   },
   watch: {
-    $route () {
+    $route() {
       this.setHtmlTitle()
-    }
+    },
+  },
+  created() {
+    this.setHtmlTitle()
+    enquireScreen((isMobile) => this.$store.dispatch('app/setDevice', isMobile))
   },
   methods: {
-    setHtmlTitle () {
+    setHtmlTitle() {
       const meta_title = this.$route.meta.title
       document.title = meta_title ? `${meta_title} - ${title}` : title
-    }
-  }
-
+    },
+  },
 }
 </script>

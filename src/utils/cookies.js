@@ -6,7 +6,7 @@ const DEFAULT_KEY = 've-admin-'
 
 cookies.set = function (name = 'default', value = '', cookieSetting = {}) {
   const currentCookieSetting = {
-    expires: 1
+    expires: 1,
   }
   Object.assign(currentCookieSetting, cookieSetting)
   Cookies.set(`${DEFAULT_KEY}${name}`, value, currentCookieSetting)

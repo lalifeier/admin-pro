@@ -15,19 +15,19 @@ import GlobalTransition from '@/components/transition'
 
 export default {
   components: { GlobalTransition },
-  data () {
+  data() {
     return {}
   },
   computed: {
     ...mapGetters(['animate']),
-    cachedViews () {
+    cachedViews() {
       return this.$store.state.tagsView.cachedViews
     },
-    key () {
+    key() {
       return this.$route.path
-    }
+    },
   },
-  methods: {}
+  methods: {},
 }
 </script>
 

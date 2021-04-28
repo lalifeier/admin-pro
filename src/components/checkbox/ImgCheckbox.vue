@@ -10,64 +10,62 @@
 <script>
 export default {
   name: 'ImgCheckbox',
+  inject: ['groupContext'],
   props: {
     title: {
       type: String,
       required: false,
-      default: ''
+      default: '',
     },
     img: {
       type: String,
       required: true,
-      default: ''
+      default: '',
     },
     value: {
       type: String,
       required: true,
-      default: ''
+      default: '',
     },
     checked: {
       type: Boolean,
       required: false,
-      default: false
-    }
+      default: false,
+    },
   },
-  data () {
+  data() {
     return {
-      isChecked: this.initChecked()
+      isChecked: this.initChecked(),
     }
   },
-  inject: ['groupContext'],
   watch: {
-    isChecked () {
+    isChecked() {
       const option = {
         value: this.value,
-        checked: this.isChecked
+        checked: this.isChecked,
       }
       this.$emit('change', option)
       const groupContext = this.groupContext
       if (groupContext) {
         groupContext.handleChange(option)
       }
-    }
+    },
   },
-  created () {
+  created() {
     const groupContext = this.groupContext
     if (groupContext) {
       this.isChecked =
-        groupContext.defaultValues.length > 0
-          ? groupContext.defaultValues.includes(this.value)
-          : this.isChecked
+        groupContext.defaultValues.length > 0 ? groupContext.defaultValues.includes(this.value) : this.isChecked
       groupContext.options.push(this)
     }
   },
   methods: {
-    toggle () {
+    toggle() {
       if (this.groupContext.multiple || !this.isChecked) {
         this.isChecked = !this.isChecked
       }
     },
-    initChecked () {
+    initChecked() {
       const groupContext = this.groupContext
       if (!groupContext) {
         return this.checked
@@ -76,8 +74,8 @@ export default {
       } else {
         return groupContext.defaultValues[0] === this.value
       }
-    }
-  }
+    },
+  },
 }
 </script>
 

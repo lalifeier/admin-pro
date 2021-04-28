@@ -24,8 +24,8 @@
           ></side-menu>
         </el-menu>
       </div>
-      <div class="side-links" v-if="!isMobile">
-        <svg-icon @click="handleCollapse" :icon-class="sidebar ? 'menu-fold' : 'menu-unfold'" />
+      <div v-if="!isMobile" class="side-links">
+        <svg-icon :icon-class="sidebar ? 'menu-fold' : 'menu-unfold'" @click="handleCollapse" />
       </div>
     </div>
   </aside>
@@ -40,16 +40,16 @@ import SideMenu from './SideMenu'
 import { mapGetters } from 'vuex'
 
 export default {
-  data () {
+  components: { SideMenu },
+  data() {
     return {
       isCollapse: true,
-      title
+      title,
     }
   },
-  components: { SideMenu },
   computed: {
     ...mapGetters(['theme', 'sidebar', 'fixedSide', 'permission_routes', 'isMobile']),
-    activeMenu () {
+    activeMenu() {
       const route = this.$route
       const { meta, path } = route
       if (meta.activeMenu) {
@@ -57,20 +57,20 @@ export default {
       }
       return path
     },
-    sideStyle () {
+    sideStyle() {
       const width = this.sidebar ? 208 : 48
       return {
         flex: `0 0 ${width}px`,
         maxWidth: `${width}px`,
         minWidth: `${width}px`,
-        width: `${width}px`
+        width: `${width}px`,
       }
-    }
+    },
   },
   methods: {
-    handleCollapse () {
+    handleCollapse() {
       this.$store.dispatch('setting/setSideBar')
-    }
-  }
+    },
+  },
 }
 </script>

@@ -1,15 +1,16 @@
 module.exports = {
   root: true,
   env: {
-    node: true
+    browser: true,
+    node: true,
+    es6: true
   },
-  extends: ['plugin:vue/essential', '@vue/standard'],
+  extends: ['plugin:vue/recommended', 'plugin:prettier/recommended'],
   parserOptions: {
     parser: 'babel-eslint'
   },
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    camelcase: 0
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off'
   }
 }

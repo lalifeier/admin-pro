@@ -1,7 +1,7 @@
 <template>
   <el-color-picker
     v-model="theme"
-    :predefine="['#409EFF', '#1890ff', '#304156','#212121','#11a983', '#13c2c2', '#6959CD', '#f5222d']"
+    :predefine="['#409EFF', '#1890ff', '#304156', '#212121', '#11a983', '#13c2c2', '#6959CD', '#f5222d']"
     class="theme-picker"
     popper-class="theme-picker-dropdown"
   />
@@ -12,25 +12,25 @@ const version = require('element-ui/package.json').version // element-ui version
 const ORIGINAL_THEME = '#409EFF' // default color
 
 export default {
-  data () {
+  data() {
     return {
       chalk: '', // content of theme-chalk css
-      theme: ''
+      theme: '',
     }
   },
   computed: {
-    defaultTheme () {
+    defaultTheme() {
       return this.$store.state.setting.theme.color
-    }
+    },
   },
   watch: {
     defaultTheme: {
       handler: function (val, oldVal) {
         this.theme = val
       },
-      immediate: true
+      immediate: true,
     },
-    async theme (val) {
+    async theme(val) {
       const oldVal = this.chalk ? this.theme : ORIGINAL_THEME
       if (typeof val !== 'string') return
       const themeCluster = this.getThemeCluster(val.replace('#', ''))
@@ -60,22 +60,21 @@ export default {
 
       chalkHandler()
 
-      const styles = [].slice.call(document.querySelectorAll('style'))
-        .filter(style => {
-          const text = style.innerText
-          return new RegExp(oldVal, 'i').test(text) && !/Chalk Variables/.test(text)
-        })
-      styles.forEach(style => {
+      const styles = [].slice.call(document.querySelectorAll('style')).filter((style) => {
+        const text = style.innerText
+        return new RegExp(oldVal, 'i').test(text) && !/Chalk Variables/.test(text)
+      })
+      styles.forEach((style) => {
         const { innerText } = style
         if (typeof innerText !== 'string') return
         style.innerText = this.updateStyle(innerText, originalCluster, themeCluster)
       })
       this.$emit('change', val)
-    }
+    },
   },
 
   methods: {
-    updateStyle (style, oldCluster, newCluster) {
+    updateStyle(style, oldCluster, newCluster) {
       let newStyle = style
       oldCluster.forEach((color, index) => {
         newStyle = newStyle.replace(new RegExp(color, 'ig'), newCluster[index])
@@ -83,8 +82,8 @@ export default {
       return newStyle
     },
 
-    getCSSString (url, variable) {
-      return new Promise(resolve => {
+    getCSSString(url, variable) {
+      return new Promise((resolve) => {
         const xhr = new XMLHttpRequest()
         xhr.onreadystatechange = () => {
           if (xhr.readyState === 4 && xhr.status === 200) {
@@ -97,13 +96,14 @@ export default {
       })
     },
 
-    getThemeCluster (theme) {
+    getThemeCluster(theme) {
       const tintColor = (color, tint) => {
         let red = parseInt(color.slice(0, 2), 16)
         let green = parseInt(color.slice(2, 4), 16)
         let blue = parseInt(color.slice(4, 6), 16)
 
-        if (tint === 0) { // when primary color is in its rgb space
+        if (tint === 0) {
+          // when primary color is in its rgb space
           return [red, green, blue].join(',')
         } else {
           red += Math.round(tint * (255 - red))
@@ -140,8 +140,8 @@ export default {
       }
       clusters.push(shadeColor(theme, 0.1))
       return clusters
-    }
-  }
+    },
+  },
 }
 </script>
 

@@ -7,42 +7,42 @@
 <script>
 export default {
   name: 'ColorCheckboxGroup',
+  provide() {
+    return {
+      groupContext: this,
+    }
+  },
   props: {
     multiple: {
       type: Boolean,
       required: false,
-      default: false
+      default: false,
     },
     defaultValues: {
       type: Array,
       required: false,
-      default: () => []
-    }
+      default: () => [],
+    },
   },
-  data () {
+  data() {
     return {
       options: [],
-      values: []
-    }
-  },
-  provide () {
-    return {
-      groupContext: this
+      values: [],
     }
   },
   watch: {
-    values (value) {
+    values(value) {
       this.$emit('change', value)
-    }
+    },
   },
   methods: {
-    handleChange (option) {
+    handleChange(option) {
       if (option.checked) {
         if (this.multiple) {
           this.values.push(option.value)
         } else {
           this.values = [option.value]
-          this.options.forEach(item => {
+          this.options.forEach((item) => {
             if (item.value !== option.value) {
               item.isChecked = false
             }
@@ -50,14 +50,12 @@ export default {
         }
       } else {
         if (this.values.includes(option.value)) {
-          this.values = this.values.filter(item => item !== option.value)
+          this.values = this.values.filter((item) => item !== option.value)
         }
       }
-    }
-  }
+    },
+  },
 }
 </script>
 
-<style>
-
-</style>
+<style></style>

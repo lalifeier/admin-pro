@@ -1,7 +1,7 @@
 <template>
   <div class="result" style="background: none;">
     <div class="result-icon result-image">
-      <img :src="require('../../assets/img/'+config.img)" />
+      <img :src="require('../../assets/img/' + config.img)" />
     </div>
     <div class="result-title">{{ config.title }}</div>
     <div class="result-subtitle">{{ config.desc }}</div>
@@ -24,11 +24,11 @@ export default {
         return {
           img: '',
           title: '',
-          desc: ''
+          desc: '',
         }
-      }
-    }
-  }
+      },
+    },
+  },
 }
 </script>
 

@@ -14,27 +14,25 @@
 </template>
 
 <script>
-
 import SideMenu from '../../SideMenu/SideMenu'
 import { mapGetters } from 'vuex'
 
 export default {
-  data () {
-    return {
-    }
-  },
   components: { SideMenu },
+  data() {
+    return {}
+  },
   computed: {
     ...mapGetters(['theme', 'sidebar', 'fixedSide', 'permission_routes', 'isMobile']),
-    activeMenu () {
+    activeMenu() {
       const route = this.$route
       const { meta, path } = route
       if (meta.activeMenu) {
         return meta.activeMenu
       }
       return path
-    }
+    },
   },
-  methods: {}
+  methods: {},
 }
 </script>

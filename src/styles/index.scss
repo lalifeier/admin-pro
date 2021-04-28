@@ -1,6 +1,6 @@
-@import "./themes/index.scss";
-@import "./element-variables.scss";
-@import "./element-ui.scss";
+@import './themes/index.scss';
+@import './element-variables.scss';
+@import './element-ui.scss';
 
 html {
   box-sizing: border-box;
@@ -33,7 +33,7 @@ a:hover {
     height: 0;
     font-size: 0;
     visibility: hidden;
-    content: " ";
+    content: ' ';
   }
 }
 

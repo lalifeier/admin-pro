@@ -11,7 +11,7 @@
     <el-dropdown-menu slot="dropdown">
       <el-dropdown-item> <svg-icon icon-class="user" />&nbsp; 个人中心 </el-dropdown-item>
       <el-dropdown-item> <svg-icon icon-class="setting" />&nbsp;个人设置 </el-dropdown-item>
-      <el-dropdown-item @click.native="handleLogout()" divided>
+      <el-dropdown-item divided @click.native="handleLogout()">
         <svg-icon icon-class="logout" />&nbsp;退出登录
       </el-dropdown-item>
     </el-dropdown-menu>
@@ -22,12 +22,12 @@
 export default {
   name: 'HeaderAvatar',
   methods: {
-    handleLogout () {
+    handleLogout() {
       this.$confirm('确认退出登录吗？', '注销', () => {
         this.$store.dispatch('user/logout')
       })
-    }
-  }
+    },
+  },
 }
 </script>
 

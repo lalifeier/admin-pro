@@ -1,10 +1,10 @@
-export function unique (arr) {
+export function unique(arr) {
   return Array.from(new Set(arr))
 }
 
-export function uniqWith (arr, key) {
+export function uniqWith(arr, key) {
   const map = new Map()
-  arr.forEach(item => {
+  arr.forEach((item) => {
     if (!map.has(item[key])) {
       map.set(item[key], item)
     }
@@ -12,7 +12,7 @@ export function uniqWith (arr, key) {
   return [...map.values()]
 }
 
-export function compareAsc (x, y) {
+export function compareAsc(x, y) {
   if (x < y) {
     return -1
   } else if (x > y) {
@@ -21,7 +21,7 @@ export function compareAsc (x, y) {
     return 0
   }
 }
-export function compareDesc (x, y) {
+export function compareDesc(x, y) {
   if (x < y) {
     return 1
   } else if (x > y) {
@@ -31,7 +31,7 @@ export function compareDesc (x, y) {
   }
 }
 
-export function compareWith (prop) {
+export function compareWith(prop) {
   return function (obj1, obj2) {
     let val1 = obj1[prop]
     let val2 = obj2[prop]
@@ -49,7 +49,7 @@ export function compareWith (prop) {
   }
 }
 
-export function groupBy (arr, key) {
+export function groupBy(arr, key) {
   return arr.reduce((total, val) => {
     const value = val[key]
     total[value] = total[value] || []
@@ -58,13 +58,13 @@ export function groupBy (arr, key) {
   }, Object.create(null))
 }
 
-export function groupByWithSum (arr, key, keys) {
+export function groupByWithSum(arr, key, keys) {
   return arr.reduce((total, val) => {
-    const index = total.findIndex(obj => obj[key] === val[key])
+    const index = total.findIndex((obj) => obj[key] === val[key])
     if (index === -1) {
       total.push(val)
     } else {
-      keys.forEach(key => {
+      keys.forEach((key) => {
         total[index][key] += val[key]
       })
     }

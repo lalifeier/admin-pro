@@ -12,7 +12,7 @@ export default {
     avatar: '',
     access_token: '',
     refresh_token: '',
-    roles: []
+    roles: [],
   },
   mutations: {
     SET_TOKEN: (state, data) => {
@@ -21,7 +21,7 @@ export default {
     RESET_TOKEN: (state) => {
       state = Object.assign(state, {
         access_token: '',
-        refresh_token: ''
+        refresh_token: '',
       })
     },
     SET_USER_INFO: (state, userInfo) => {
@@ -31,12 +31,12 @@ export default {
       state = Object.assign(state, {
         uid: '',
         username: '',
-        avatar: ''
+        avatar: '',
       })
-    }
+    },
   },
   actions: {
-    async login ({ commit }, params) {
+    async login({ commit }, params) {
       const res = await login(params)
       const { data } = res
       const { access_token, refresh_token } = data
@@ -46,22 +46,22 @@ export default {
       commit('SET_TOKEN', data)
     },
 
-    async getUserInfo ({ commit, state }) {
+    async getUserInfo({ commit, state }) {
       const { data } = await getUserInfo(state.access_token)
       commit('SET_USER_INFO', data)
       return data
     },
 
-    logout () {
+    logout() {
       resetRouter()
       cookies.remove(ACCESS_TOKEN)
       cookies.remove(REFRESH_TOKEN)
       window.location.reload()
     },
 
-    resetToken ({ commit }) {
+    resetToken({ commit }) {
       commit('RESET_TOKEN')
-    }
+    },
   },
-  getters: {}
+  getters: {},
 }

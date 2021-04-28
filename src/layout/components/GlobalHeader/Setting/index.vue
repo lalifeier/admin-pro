@@ -13,43 +13,24 @@
         <setting-item title="整体风格设置">
           <img-checkbox-group
             :default-values="[theme.mode]"
-            @change="values => handleTheme({ ...theme, mode: values[0] })"
+            @change="(values) => handleTheme({ ...theme, mode: values[0] })"
           >
-            <img-checkbox
-              title="暗色菜单风格"
-              :img="require('../../../../assets/img/dark.svg')"
-              value="dark"
-            />
-            <img-checkbox
-              title="亮色菜单风格"
-              :img="require('../../../../assets/img/light.svg')"
-              value="light"
-            />
+            <img-checkbox title="暗色菜单风格" :img="require('../../../../assets/img/dark.svg')" value="dark" />
+            <img-checkbox title="亮色菜单风格" :img="require('../../../../assets/img/light.svg')" value="light" />
             <!-- <img-checkbox title="深夜风格" :img="require('../../../../assets/img/night.svg')" value="night" /> -->
           </img-checkbox-group>
         </setting-item>
         <setting-item title="主题色">
-          <color-checkbox-group :defaultValues="[theme.color]" @change="handleChangeThemeColor">
+          <color-checkbox-group :default-values="[theme.color]" @change="handleChangeThemeColor">
             <color-checkbox v-for="(color, index) in palettes" :key="index" :value="color" />
           </color-checkbox-group>
         </setting-item>
         <el-divider></el-divider>
         <setting-item title="导航栏模式">
           <div class="setting-checkbox">
-            <img-checkbox-group
-              :default-values="[menuType]"
-              @change="values => handleMenuType(values[0])"
-            >
-              <img-checkbox
-                title="侧边导航"
-                :img="require('../../../../assets/img/side.svg')"
-                value="side"
-              />
-              <img-checkbox
-                title="顶部导航"
-                :img="require('../../../../assets/img/head.svg')"
-                value="head"
-              />
+            <img-checkbox-group :default-values="[menuType]" @change="(values) => handleMenuType(values[0])">
+              <img-checkbox title="侧边导航" :img="require('../../../../assets/img/side.svg')" value="side" />
+              <img-checkbox title="顶部导航" :img="require('../../../../assets/img/head.svg')" value="head" />
               <!-- <img-checkbox title="混合导航" :img="require('../../../../assets/img/mix.svg')" value="mix" /> -->
             </img-checkbox-group>
           </div>
@@ -59,17 +40,13 @@
           <div class="setting-list-item">
             <span>内容区域宽度</span>
             <el-select :value="wideType" style="width: 100px;" size="mini" @change="changeWideType">
-              <el-option value="wide" label="固定" v-if="menuType === 'head'"></el-option>
+              <el-option v-if="menuType === 'head'" value="wide" label="固定"></el-option>
               <el-option value="flow" label="流式"></el-option>
             </el-select>
           </div>
           <div class="setting-list-item">
             <span>是否开启多页签</span>
-            <el-switch
-              :value="tagsView"
-              :disabled="menuType === 'head'"
-              @change="changeTagsView"
-            ></el-switch>
+            <el-switch :value="tagsView" :disabled="menuType === 'head'" @change="changeTagsView"></el-switch>
           </div>
           <div class="setting-list-item">
             <span>固定Header</span>
@@ -77,11 +54,7 @@
           </div>
           <div class="setting-list-item">
             <span>固定侧边栏</span>
-            <el-switch
-              :value="fixedSide"
-              :disabled="menuType === 'head'"
-              @change="changeFixedSide"
-            ></el-switch>
+            <el-switch :value="fixedSide" :disabled="menuType === 'head'" @change="changeFixedSide"></el-switch>
           </div>
         </div>
         <el-divider></el-divider>
@@ -91,19 +64,34 @@
               <span>禁用动画</span>
               <el-switch
                 :value="animate.disabled"
-              @change="val => handleChangeAnimate({...animate, disabled: val})"
+                @change="(val) => handleChangeAnimate({ ...animate, disabled: val })"
               ></el-switch>
             </div>
             <div class="setting-list-item">
               <span>动画效果</span>
-              <el-select :value="animate.name" style="width: 100px;" size="mini"   @change="val => handleChangeAnimate({...animate, name: val})">
-                <el-option v-for="(item,index) in animates" :key="index" :label="item.label" :value="item.value"></el-option>
+              <el-select
+                :value="animate.name"
+                style="width: 100px;"
+                size="mini"
+                @change="(val) => handleChangeAnimate({ ...animate, name: val })"
+              >
+                <el-option
+                  v-for="(item, index) in animates"
+                  :key="index"
+                  :label="item.label"
+                  :value="item.value"
+                ></el-option>
               </el-select>
             </div>
-             <div class="setting-list-item">
+            <div class="setting-list-item">
               <span>动画方向</span>
-              <el-select :value="animate.direction" style="width: 100px;" size="mini" @change="val => handleChangeAnimate({...animate, direction: val})">
-                <el-option v-for="(item,index) in directions" :key="index" :label="item" :value="item"></el-option>
+              <el-select
+                :value="animate.direction"
+                style="width: 100px;"
+                size="mini"
+                @change="(val) => handleChangeAnimate({ ...animate, direction: val })"
+              >
+                <el-option v-for="(item, index) in directions" :key="index" :label="item" :value="item"></el-option>
               </el-select>
             </div>
           </div>
@@ -114,12 +102,7 @@
 </template>
 
 <script>
-import {
-  ImgCheckbox,
-  ImgCheckboxGroup,
-  ColorCheckbox,
-  ColorCheckboxGroup
-} from '@/components/checkbox'
+import { ImgCheckbox, ImgCheckboxGroup, ColorCheckbox, ColorCheckboxGroup } from '@/components/checkbox'
 import SettingItem from './SettingItem'
 import { mapGetters } from 'vuex'
 
@@ -129,60 +112,52 @@ import { changeColor } from '@/utils/themeColorClient'
 
 export default {
   components: { SettingItem, ImgCheckbox, ImgCheckboxGroup, ColorCheckbox, ColorCheckboxGroup },
-  data () {
+  data() {
     return {
       showSettingDrawer: false,
       palettes: PALETTES,
-      animates: ANIMATES
+      animates: ANIMATES,
     }
   },
   computed: {
-    ...mapGetters([
-      'theme',
-      'menuType',
-      'tagsView',
-      'wideType',
-      'fixedHeader',
-      'fixedSide',
-      'animate'
-    ]),
-    isAside () {
+    ...mapGetters(['theme', 'menuType', 'tagsView', 'wideType', 'fixedHeader', 'fixedSide', 'animate']),
+    isAside() {
       return this.menuType === 'side'
     },
-    directions () {
-      return this.animates.find(item => item.value === this.animate.name).directions
-    }
+    directions() {
+      return this.animates.find((item) => item.value === this.animate.name).directions
+    },
   },
   methods: {
-    handleTheme (val) {
+    handleTheme(val) {
       this.$store.dispatch('setting/setTheme', val)
     },
-    handleMenuType (type) {
+    handleMenuType(type) {
       this.$store.dispatch('setting/setMenuType', type)
       this.changeWideType(this.isAside ? 'flow' : 'wide')
       // if (type === 'header') {}
     },
-    changeWideType (type) {
+    changeWideType(type) {
       this.$store.dispatch('setting/setWideType', type)
     },
-    changeTagsView (val) {
+    changeTagsView(val) {
       this.$store.dispatch('setting/setTagsView')
     },
-    changeFixedHeader (val) {
+    changeFixedHeader(val) {
       this.$store.dispatch('setting/setFixedHeader', val)
     },
-    changeFixedSide (val) {
+    changeFixedSide(val) {
       this.$store.dispatch('setting/setFixedSide', val)
     },
-    handleChangeThemeColor (values) {
+    handleChangeThemeColor(values) {
       const color = values[0]
       changeColor(color)
       this.handleTheme({ ...this.theme, color })
     },
-    handleChangeAnimate (val) {
+    handleChangeAnimate(val) {
       this.$store.dispatch('app/setAnimate', val)
-    }
-  }
+    },
+  },
 }
 </script>
 

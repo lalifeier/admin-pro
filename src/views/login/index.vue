@@ -11,30 +11,20 @@
     </div>
     <div class="main">
       <div class="form">
-        <el-tabs class="tab" v-model="type" @tab-click="handleSetType" stretch>
+        <el-tabs v-model="type" class="tab" stretch @tab-click="handleSetType">
           <el-tab-pane label="账号密码登录" name="account">
             <el-form ref="loginForm" :model="loginForm">
               <el-form-item prop="userName">
-                <el-input
-                  size="large"
-                  name="userName"
-                  v-model="loginForm.userName"
-                  placeholder="用户名"
-                >
+                <el-input v-model="loginForm.userName" size="large" name="userName" placeholder="用户名">
                   <svg-icon slot="prefix" icon-class="user" class="prefix-icon" />
                 </el-input>
               </el-form-item>
               <el-form-item prop="password">
-                <el-input
-                  size="large"
-                  name="password"
-                  v-model="loginForm.password"
-                  placeholder="密码"
-                >
+                <el-input v-model="loginForm.password" size="large" name="password" placeholder="密码">
                   <svg-icon slot="prefix" icon-class="lock" class="prefix-icon" />
                 </el-input>
               </el-form-item>
-              <el-row style="margin-bottom: 24px;">
+              <el-row style="margin-bottom: 24px">
                 <el-col :span="8">
                   <el-checkbox v-model="loginForm.remember">自动登录</el-checkbox>
                 </el-col>
@@ -42,35 +32,33 @@
                   <a href="#">忘记密码</a>
                 </el-col>
               </el-row>
-              <el-button style="width: 100%;" size="large" type="primary" @click="handleLogin"
-                >提交</el-button
-              >
+              <el-button style="width: 100%" size="large" type="primary" @click="handleLogin">提交</el-button>
             </el-form>
           </el-tab-pane>
           <el-tab-pane label="手机号码登录" name="phone">
             <el-form ref="loginForm" :model="loginForm">
               <el-form-item prop="phone">
-                <el-input size="large" name="phone" v-model="loginForm.phone" placeholder="手机号">
+                <el-input v-model="loginForm.phone" size="large" name="phone" placeholder="手机号">
                   <svg-icon slot="prefix" icon-class="mobile" class="prefix-icon" />
                 </el-input>
               </el-form-item>
               <el-form-item prop="captcha">
                 <div class="captcha">
                   <el-input
+                    v-model="loginForm.captcha"
                     size="large"
                     class="captcha-input"
                     name="captcha"
-                    v-model="loginForm.captcha"
                     placeholder="验证码"
                   >
                     <svg-icon slot="prefix" icon-class="mail" class="prefix-icon" />
                   </el-input>
-                  <el-button size="large" @click="getCaptcha()" :disabled="captchaDisabled">{{
+                  <el-button size="large" :disabled="captchaDisabled" @click="getCaptcha()">{{
                     captchaWord
                   }}</el-button>
                 </div>
               </el-form-item>
-              <el-row style="margin-bottom: 24px;">
+              <el-row style="margin-bottom: 24px">
                 <el-col :span="8">
                   <el-checkbox v-model="loginForm.remember">自动登录</el-checkbox>
                 </el-col>
@@ -78,9 +66,7 @@
                   <a href="#">忘记密码</a>
                 </el-col>
               </el-row>
-              <el-button style="width: 100%;" size="large" type="primary" @click="handleLogin"
-                >提交</el-button
-              >
+              <el-button style="width: 100%" size="large" type="primary" @click="handleLogin">提交</el-button>
             </el-form>
           </el-tab-pane>
         </el-tabs>
@@ -106,30 +92,30 @@ import { github } from '@/config'
 
 export default {
   name: 'Login',
-  data () {
+  data() {
     return {
       type: 'account',
       loginForm: {
         userName: '',
-        password: ''
+        password: '',
       },
       captchaWord: '获取验证码',
       captchaDisabled: false,
       countDownTime: 60,
       timer: null,
-      github
+      github,
     }
   },
-  async mounted () {
+  async mounted() {
     // console.log(await login())
   },
   methods: {
-    handleSetType () {
+    handleSetType() {
       if (this.type === 'phone') {
         this.resetCaptcha()
       }
     },
-    getCaptcha () {
+    getCaptcha() {
       if (this.captchaDisabled) {
         return
       }
@@ -145,20 +131,20 @@ export default {
         }
       }, 1000)
     },
-    resetCaptcha () {
+    resetCaptcha() {
       clearInterval(this.timer)
       this.captchaWord = '获取验证码'
       this.countDownTime = 60
       this.captchaDisabled = false
     },
-    async handleLogin () {
+    async handleLogin() {
       await this.$store.dispatch('user/login')
       const redirect = this.$route.query.redirect
-      this.$router.push({ path: redirect || '/' }).catch(err => {
+      this.$router.push({ path: redirect || '/' }).catch((err) => {
         console.log(err)
       })
-    }
-  }
+    },
+  },
 }
 </script>
 <style lang="scss" scoped>
@@ -168,7 +154,7 @@ export default {
   height: 100vh;
   overflow: auto;
   // background-color: #f0f2f5;
-  background-image: url("../../assets/img/login-background.svg");
+  background-image: url('../../assets/img/login-background.svg');
   background-repeat: no-repeat;
   background-position: center 110px;
   background-size: 100%;

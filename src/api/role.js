@@ -1,48 +1,48 @@
 import request from '@/utils/request'
 
-export function getRole () {
+export function getRole() {
   return request({
     url: '/role/getRole',
-    method: 'post'
+    method: 'post',
   })
 }
 
-export function getRoleById (data) {
+export function getRoleById(data) {
   return request({
     url: '/role/getRoleById',
     method: 'post',
-    data
+    data,
   })
 }
 
-export function getRoleList (data) {
+export function getRoleList(data) {
   return request({
     url: '/role/getRoleList',
     method: 'post',
-    data
+    data,
   })
 }
 
-export function addRole (data) {
+export function addRole(data) {
   return request({
     url: '/role/addRole',
     method: 'post',
-    data
+    data,
   })
 }
 
-export function updateRole (data) {
+export function updateRole(data) {
   return request({
     url: '/role/updateRole',
     method: 'post',
-    data
+    data,
   })
 }
 
-export function deleteRole (data) {
+export function deleteRole(data) {
   return request({
     url: '/role/deleteRole',
     method: 'post',
-    data
+    data,
   })
 }

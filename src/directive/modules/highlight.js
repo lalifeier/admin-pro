@@ -1,14 +1,14 @@
 export default {
-  bind (el, binding) {
+  bind(el, binding) {
     highlight(el, binding)
   },
 
-  update (el, binding) {
+  update(el, binding) {
     highlight(el, binding)
-  }
+  },
 }
 
-function highlight (el, binding) {
+function highlight(el, binding) {
   const info = binding.value.info || []
   if (info.length === 0) {
     return

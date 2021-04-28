@@ -1,6 +1,6 @@
 <template>
   <div>
-     <svg-icon :icon-class="isFullscreen?'fullscreen-exit':'fullscreen'" @click="click"  />
+    <svg-icon :icon-class="isFullscreen ? 'fullscreen-exit' : 'fullscreen'" @click="click" />
   </div>
 </template>
 
@@ -8,45 +8,43 @@
 import screenfull from 'screenfull'
 export default {
   name: 'Screenfull',
-  data () {
+  data() {
     return {
-      isFullscreen: false
+      isFullscreen: false,
     }
   },
-  mounted () {
+  mounted() {
     this.init()
   },
-  beforeDestroy () {
+  beforeDestroy() {
     this.destroy()
   },
   methods: {
-    click () {
+    click() {
       if (!screenfull.isEnabled) {
         this.$message({
           message: 'you browser can not work',
-          type: 'warning'
+          type: 'warning',
         })
         return false
       }
       screenfull.toggle()
     },
-    change () {
+    change() {
       this.isFullscreen = screenfull.isFullscreen
     },
-    init () {
+    init() {
       if (screenfull.isEnabled) {
         screenfull.on('change', this.change)
       }
     },
-    destroy () {
+    destroy() {
       if (screenfull.isEnabled) {
         screenfull.off('change', this.change)
       }
-    }
-  }
+    },
+  },
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

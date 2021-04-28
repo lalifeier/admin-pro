@@ -2,15 +2,19 @@
 import Clipboard from 'clipboard'
 
 export default {
-  bind (el, binding) {
+  bind(el, binding) {
     if (binding.arg === 'success') {
       el._vClipboard_success = binding.value
     } else if (binding.arg === 'error') {
       el._vClipboard_error = binding.value
     } else {
       const clipboard = new Clipboard(el, {
-        text: function () { return binding.value },
-        action: function () { return binding.arg === 'cut' ? 'cut' : 'copy' }
+        text: function () {
+          return binding.value
+        },
+        action: function () {
+          return binding.arg === 'cut' ? 'cut' : 'copy'
+        },
       })
       clipboard.on('success', function (e) {
         const callback = el._vClipboard_success
@@ -23,17 +27,21 @@ export default {
       el._vClipboard = clipboard
     }
   },
-  update (el, binding) {
+  update(el, binding) {
     if (binding.arg === 'success') {
       el._vClipboard_success = binding.value
     } else if (binding.arg === 'error') {
       el._vClipboard_error = binding.value
     } else {
-      el._vClipboard.text = function () { return binding.value }
-      el._vClipboard.action = function () { return binding.arg === 'cut' ? 'cut' : 'copy' }
+      el._vClipboard.text = function () {
+        return binding.value
+      }
+      el._vClipboard.action = function () {
+        return binding.arg === 'cut' ? 'cut' : 'copy'
+      }
     }
   },
-  unbind (el, binding) {
+  unbind(el, binding) {
     if (binding.arg === 'success') {
       delete el._vClipboard_success
     } else if (binding.arg === 'error') {
@@ -42,5 +50,5 @@ export default {
       el._vClipboard.destroy()
       delete el._vClipboard
     }
-  }
+  },
 }

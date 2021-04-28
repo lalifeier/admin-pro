@@ -1,11 +1,6 @@
 <template>
   <div>
-    <input
-      id="pkeyword"
-      type="search"
-      place-holder="搜索关键字"
-      style=" width: 98%; margin: 10px 5px 10px 5px;"
-    />
+    <input id="pkeyword" type="search" place-holder="搜索关键字" style="width: 98%; margin: 10px 5px 10px 5px;" />
     <div :id="ztreeId" class="ztree" />
   </div>
 </template>
@@ -37,24 +32,24 @@ export default {
       require: false,
       default: function () {
         return {}
-      }
+      },
     },
     nodes: {
       type: Array,
       require: true,
       default: function () {
         return []
-      }
-    }
+      },
+    },
   },
-  data () {
+  data() {
     return {
       ztreeId: 'ztree_' + parseInt(Math.random() * 1e10),
       ztreeObj: null,
       list: [],
       ztreeSetting: {
         view: {
-          showIcon: false // default to hide icon
+          showIcon: false, // default to hide icon
         },
         callback: {
           onAsyncError: (...arg) => {
@@ -101,9 +96,9 @@ export default {
           },
           onRightClick: (...arg) => {
             this.$emit('onRightClick', ...arg)
-          }
-        }
-      }
+          },
+        },
+      },
     }
   },
   watch: {
@@ -124,14 +119,14 @@ export default {
           // this.$emit("onCreated", this.ztreeObj);
           this.$emit('onCreated', {
             id: this.ztreeId,
-            obj: this.ztreeObj
+            obj: this.ztreeObj,
           })
         })
       },
       deep: true,
-      immediate: true
-    }
-  }
+      immediate: true,
+    },
+  },
 }
 </script>
 
@@ -160,7 +155,7 @@ export default {
   left: 10px;
   height: 100%;
   border-right: 1px dotted #dbdbdb;
-  content: "";
+  content: '';
 }
 
 .ztree >>> .roots_docu::before,
@@ -171,7 +166,7 @@ export default {
 .ztree >>> .bottom_docu::after {
   position: absolute;
   border: 0 dotted #dbdbdb;
-  content: "";
+  content: '';
 }
 
 .ztree >>> .roots_docu::before {
@@ -317,7 +312,7 @@ export default {
   transition: -webkit-transform 0.2s ease-in-out;
   transition: transform 0.2s ease-in-out;
   transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
-  content: "";
+  content: '';
 }
 
 .ztree >>> .button.checkbox_false_full_focus {
@@ -401,7 +396,7 @@ export default {
   transition: -webkit-transform ease 0.3s;
   transition: transform ease 0.3s;
   transition: transform ease 0.3s, -webkit-transform ease 0.3s;
-  content: "";
+  content: '';
 }
 
 .ztree >>> .button.noline_open::before,
@@ -416,7 +411,7 @@ export default {
 .ztree >>> .button.ico_loading {
   margin-right: 2px;
   background:
-    url("data:image/gif;base64,R0lGODlhEAAQAKIGAMLY8YSx5HOm4Mjc88/g9Ofw+v///wAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQFCgAGACwAAAAAEAAQAAADMGi6RbUwGjKIXCAA016PgRBElAVlG/RdLOO0X9nK61W39qvqiwz5Ls/rRqrggsdkAgAh+QQFCgAGACwCAAAABwAFAAADD2hqELAmiFBIYY4MAutdCQAh+QQFCgAGACwGAAAABwAFAAADD1hU1kaDOKMYCGAGEeYFCQAh+QQFCgAGACwKAAIABQAHAAADEFhUZjSkKdZqBQG0IELDQAIAIfkEBQoABgAsCgAGAAUABwAAAxBoVlRKgyjmlAIBqCDCzUoCACH5BAUKAAYALAYACgAHAAUAAAMPaGpFtYYMAgJgLogA610JACH5BAUKAAYALAIACgAHAAUAAAMPCAHWFiI4o1ghZZJB5i0JACH5BAUKAAYALAAABgAFAAcAAAMQCAFmIaEp1motpDQySMNFAgA7")
+    url('data:image/gif;base64,R0lGODlhEAAQAKIGAMLY8YSx5HOm4Mjc88/g9Ofw+v///wAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQFCgAGACwAAAAAEAAQAAADMGi6RbUwGjKIXCAA016PgRBElAVlG/RdLOO0X9nK61W39qvqiwz5Ls/rRqrggsdkAgAh+QQFCgAGACwCAAAABwAFAAADD2hqELAmiFBIYY4MAutdCQAh+QQFCgAGACwGAAAABwAFAAADD1hU1kaDOKMYCGAGEeYFCQAh+QQFCgAGACwKAAIABQAHAAADEFhUZjSkKdZqBQG0IELDQAIAIfkEBQoABgAsCgAGAAUABwAAAxBoVlRKgyjmlAIBqCDCzUoCACH5BAUKAAYALAYACgAHAAUAAAMPaGpFtYYMAgJgLogA610JACH5BAUKAAYALAIACgAHAAUAAAMPCAHWFiI4o1ghZZJB5i0JACH5BAUKAAYALAAABgAFAAcAAAMQCAFmIaEp1motpDQySMNFAgA7')
     0 center no-repeat;
 }
 

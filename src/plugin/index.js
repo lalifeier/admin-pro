@@ -3,7 +3,7 @@ import dayjs from 'dayjs'
 // dayjs.locale('zh-cn')
 
 export default {
-  install (Vue, options) {
+  install(Vue, options) {
     const modulesFiles = require.context('./modules', true, /\.js$/)
     modulesFiles.keys().forEach((key) => {
       Vue.use(modulesFiles(key).default)
@@ -12,5 +12,5 @@ export default {
     Vue.prototype.$bus = new Vue()
 
     Vue.prototype.dayjs = dayjs
-  }
+  },
 }

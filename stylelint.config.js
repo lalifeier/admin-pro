@@ -4,10 +4,13 @@ module.exports = {
   plugins: ['stylelint-scss', 'stylelint-order', 'stylelint-config-rational-order/plugin'],
   rules: {
     'order/properties-order': [],
-    'plugin/rational-order': [true, {
-      'border-in-box-model': false,
-      'empty-line-between-groups': false
-    }],
+    'plugin/rational-order': [
+      true,
+      {
+        'border-in-box-model': false,
+        'empty-line-between-groups': false
+      }
+    ],
 
     'media-feature-name-no-vendor-prefix': true,
     'at-rule-no-vendor-prefix': true,
@@ -24,7 +27,23 @@ module.exports = {
     'at-rule-no-unknown': [
       true,
       {
-        ignoreAtRules: ['extend', 'at-root', 'debug', 'warn', 'error', 'if', 'else', 'for', 'each', 'while', 'mixin', 'include', 'content', 'return', 'function']
+        ignoreAtRules: [
+          'extend',
+          'at-root',
+          'debug',
+          'warn',
+          'error',
+          'if',
+          'else',
+          'for',
+          'each',
+          'while',
+          'mixin',
+          'include',
+          'content',
+          'return',
+          'function'
+        ]
       }
     ],
     'selector-pseudo-element-no-unknown': [
@@ -35,6 +54,5 @@ module.exports = {
     ],
     'no-empty-source': null,
     'no-descending-specificity': null
-
   }
 }

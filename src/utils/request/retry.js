@@ -3,7 +3,7 @@
 // axios.defaults.retryTimes = 4
 // axios.defaults.retryDelay = 1000
 
-export function retryInterceptor (axios, err) {
+export function retryInterceptor(axios, err) {
   const config = err.config
   if (!config || !config.retryTimes) return Promise.reject(err)
   const { __retryCount = 0, retryDelay = 300, retryTimes } = config
@@ -23,9 +23,9 @@ export function retryInterceptor (axios, err) {
   })
 }
 
-export function retryAdapterEnhancer (adapter, options = {}) {
+export function retryAdapterEnhancer(adapter, options = {}) {
   const { times = 0, delay = 300 } = options
-  return async config => {
+  return async (config) => {
     const { retryTimes = times, retryDelay = delay } = config
     let __retryCount = 0
     const request = async () => {

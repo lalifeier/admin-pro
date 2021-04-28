@@ -6,15 +6,15 @@
 import Error from '@/components/Error'
 export default {
   components: { Error },
-  data () {
+  data() {
     return {
       config: {
         img: '500.svg',
         title: '500',
-        desc: '抱歉，服务器出错了。'
-      }
+        desc: '抱歉，服务器出错了。',
+      },
     }
-  }
+  },
 }
 </script>
 

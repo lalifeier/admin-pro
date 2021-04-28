@@ -24,7 +24,6 @@ module.exports = {
 
   animate: {
     name: 'roll',
-    direction: 'default'
-  }
-
+    direction: 'default',
+  },
 }

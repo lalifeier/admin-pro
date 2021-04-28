@@ -25,13 +25,13 @@ import {
   Select,
   Option,
   Popover,
-  Tooltip
+  Tooltip,
 } from 'element-ui'
 
 import { loadingText, messageDuration } from '@/config'
 
 export default {
-  install (Vue, options) {
+  install(Vue, options) {
     Vue.use(Tabs)
     Vue.use(TabPane)
     Vue.use(Steps)
@@ -72,7 +72,7 @@ export default {
       return Loading.service({
         lock: true,
         text: text || loadingText,
-        background: 'hsla(0,0%,100%,.8)'
+        background: 'hsla(0,0%,100%,.8)',
       })
     }
 
@@ -83,7 +83,7 @@ export default {
         message: message,
         type: type,
         dangerouslyUseHTMLString: true,
-        duration: messageDuration
+        duration: messageDuration,
       })
     }
 
@@ -95,7 +95,7 @@ export default {
           if (callback) {
             callback()
           }
-        }
+        },
       })
     }
 
@@ -104,7 +104,7 @@ export default {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         closeOnClickModal: false,
-        type: 'warning'
+        type: 'warning',
       })
         .then(() => {
           if (callback1) {
@@ -124,8 +124,8 @@ export default {
         message: message,
         position: position || 'top-right',
         type: type || 'success',
-        duration: messageDuration
+        duration: messageDuration,
       })
     }
-  }
+  },
 }

@@ -12,14 +12,12 @@ moment.locale('zh-cn')
 // dayjs.locale('zh-cn')
 
 export default {
-  created () {
+  created() {
     console.log(this.dayjs().format('YYYY-MM-DD'))
 
     console.log(moment().format('YYYY-MM-DD'))
-  }
+  },
 }
 </script>
 
-<style>
-
-</style>
+<style></style>
