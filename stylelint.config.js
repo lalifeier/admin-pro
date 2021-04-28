@@ -1,7 +1,8 @@
 module.exports = {
   defaultSeverity: 'error',
-  extends: ['stylelint-config-standard', 'stylelint-config-rational-order'],
+  extends: ['stylelint-config-standard', 'stylelint-config-rational-order', 'stylelint-prettier/recommended'],
   plugins: ['stylelint-scss'],
+  ignoreFiles: ['**/*.js'],
   rules: {
     'media-feature-name-no-vendor-prefix': true,
     'at-rule-no-vendor-prefix': true,
@@ -12,8 +13,8 @@ module.exports = {
     'selector-pseudo-class-no-unknown': [
       true,
       {
-        ignorePseudoClasses: ['global', 'export']
-      }
+        ignorePseudoClasses: ['global', 'export'],
+      },
     ],
     'at-rule-no-unknown': [
       true,
@@ -33,17 +34,17 @@ module.exports = {
           'include',
           'content',
           'return',
-          'function'
-        ]
-      }
+          'function',
+        ],
+      },
     ],
     'selector-pseudo-element-no-unknown': [
       true,
       {
-        ignorePseudoElements: ['v-deep']
-      }
+        ignorePseudoElements: ['v-deep'],
+      },
     ],
     'no-empty-source': null,
-    'no-descending-specificity': null
-  }
+    'no-descending-specificity': null,
+  },
 }

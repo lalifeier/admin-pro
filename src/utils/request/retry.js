@@ -4,7 +4,7 @@
 // axios.defaults.retryDelay = 1000
 
 export function retryInterceptor(axios, err) {
-  const config = err.config
+  const { config } = err
   if (!config || !config.retryTimes) return Promise.reject(err)
   const { __retryCount = 0, retryDelay = 300, retryTimes } = config
 

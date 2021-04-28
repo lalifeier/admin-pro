@@ -4,6 +4,7 @@
 
 <script>
 import Error from '@/components/Error'
+
 export default {
   components: { Error },
   data() {

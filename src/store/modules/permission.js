@@ -3,9 +3,8 @@ import { constantRoutes, asyncRoutes } from '@/router/routes'
 function hasPermission(roles, route) {
   if (route.meta && route.meta.roles) {
     return roles.some((role) => route.meta.roles.includes(role))
-  } else {
-    return true
   }
+  return true
 }
 
 export function filterAsyncRoutes(routes, roles) {

@@ -20,8 +20,8 @@ export default {
       Message({
         offset: 60,
         showClose: true,
-        message: message,
-        type: type,
+        message,
+        type,
         dangerouslyUseHTMLString: true,
         duration: messageDuration,
       })
@@ -60,8 +60,8 @@ export default {
 
     Vue.prototype.$notify = (message, title, type, position) => {
       Notification({
-        title: title,
-        message: message,
+        title,
+        message,
         position: position || 'top-right',
         type: type || 'success',
         duration: messageDuration,

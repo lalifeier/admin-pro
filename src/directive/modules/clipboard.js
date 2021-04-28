@@ -9,10 +9,10 @@ export default {
       el._vClipboard_error = binding.value
     } else {
       const clipboard = new Clipboard(el, {
-        text: function () {
+        text() {
           return binding.value
         },
-        action: function () {
+        action() {
           return binding.arg === 'cut' ? 'cut' : 'copy'
         },
       })

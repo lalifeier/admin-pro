@@ -28,6 +28,7 @@ import path from 'path'
 import { validateURL } from '@/utils/validate'
 import SideMenuItem from './SideMenuItem'
 import SideMenuLink from './SideMenuLink'
+
 export default {
   name: 'SideMenu',
   components: { SideMenuItem, SideMenuLink },

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input id="pkeyword" type="search" place-holder="搜索关键字" style="width: 98%; margin: 10px 5px 10px 5px;" />
+    <input id="pkeyword" type="search" place-holder="搜索关键字" style="width: 98%; margin: 10px 5px 10px 5px" />
     <div :id="ztreeId" class="ztree" />
   </div>
 </template>
@@ -30,21 +30,21 @@ export default {
     setting: {
       type: Object,
       require: false,
-      default: function () {
+      default() {
         return {}
       },
     },
     nodes: {
       type: Array,
       require: true,
-      default: function () {
+      default() {
         return []
       },
     },
   },
   data() {
     return {
-      ztreeId: 'ztree_' + parseInt(Math.random() * 1e10),
+      ztreeId: `ztree_${parseInt(Math.random() * 1e10)}`,
       ztreeObj: null,
       list: [],
       ztreeSetting: {
@@ -103,18 +103,14 @@ export default {
   },
   watch: {
     nodes: {
-      handler: function (nodes) {
+      handler(nodes) {
         this.list = nodes
         // update tree
         if (this.ztreeObj) {
           this.ztreeObj.destroy()
         }
         this.$nextTick(() => {
-          this.ztreeObj = $.fn.zTree.init(
-            $('#' + this.ztreeId),
-            Object.assign({}, this.ztreeSetting, this.setting),
-            this.list
-          )
+          this.ztreeObj = $.fn.zTree.init($(`#${this.ztreeId}`), { ...this.ztreeSetting, ...this.setting }, this.list)
           // fuzzySearch(this.ztreeObj, '#pkeyword', null, true)
           // this.$emit("onCreated", this.ztreeObj);
           this.$emit('onCreated', {
@@ -410,8 +406,7 @@ export default {
 
 .ztree >>> .button.ico_loading {
   margin-right: 2px;
-  background:
-    url('data:image/gif;base64,R0lGODlhEAAQAKIGAMLY8YSx5HOm4Mjc88/g9Ofw+v///wAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQFCgAGACwAAAAAEAAQAAADMGi6RbUwGjKIXCAA016PgRBElAVlG/RdLOO0X9nK61W39qvqiwz5Ls/rRqrggsdkAgAh+QQFCgAGACwCAAAABwAFAAADD2hqELAmiFBIYY4MAutdCQAh+QQFCgAGACwGAAAABwAFAAADD1hU1kaDOKMYCGAGEeYFCQAh+QQFCgAGACwKAAIABQAHAAADEFhUZjSkKdZqBQG0IELDQAIAIfkEBQoABgAsCgAGAAUABwAAAxBoVlRKgyjmlAIBqCDCzUoCACH5BAUKAAYALAYACgAHAAUAAAMPaGpFtYYMAgJgLogA610JACH5BAUKAAYALAIACgAHAAUAAAMPCAHWFiI4o1ghZZJB5i0JACH5BAUKAAYALAAABgAFAAcAAAMQCAFmIaEp1motpDQySMNFAgA7')
+  background: url('data:image/gif;base64,R0lGODlhEAAQAKIGAMLY8YSx5HOm4Mjc88/g9Ofw+v///wAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQFCgAGACwAAAAAEAAQAAADMGi6RbUwGjKIXCAA016PgRBElAVlG/RdLOO0X9nK61W39qvqiwz5Ls/rRqrggsdkAgAh+QQFCgAGACwCAAAABwAFAAADD2hqELAmiFBIYY4MAutdCQAh+QQFCgAGACwGAAAABwAFAAADD1hU1kaDOKMYCGAGEeYFCQAh+QQFCgAGACwKAAIABQAHAAADEFhUZjSkKdZqBQG0IELDQAIAIfkEBQoABgAsCgAGAAUABwAAAxBoVlRKgyjmlAIBqCDCzUoCACH5BAUKAAYALAYACgAHAAUAAAMPaGpFtYYMAgJgLogA610JACH5BAUKAAYALAIACgAHAAUAAAMPCAHWFiI4o1ghZZJB5i0JACH5BAUKAAYALAAABgAFAAcAAAMQCAFmIaEp1motpDQySMNFAgA7')
     0 center no-repeat;
 }
 

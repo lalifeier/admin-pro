@@ -37,6 +37,7 @@ import GlobalHeader from './components/GlobalHeader'
 import GlobalFooter from './components/GlobalFooter'
 import SideMenu from './components/SideMenu'
 import AppMain from './components/AppMain'
+
 export default {
   components: { GlobalHeader, GlobalFooter, SideMenu, AppMain },
   data() {

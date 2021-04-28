@@ -7,7 +7,7 @@
       <div class="global-header-trigger" @click="handleCollapse">
         <svg-icon :icon-class="sidebar ? 'menu-fold' : 'menu-unfold'" />
       </div>
-      <div style="flex: 1 1 0%;">
+      <div style="flex: 1 1 0%">
         <breadcrumb v-if="!isMobile"></breadcrumb>
       </div>
       <div class="global-header-right">
@@ -28,7 +28,7 @@
             <h1>{{ title }}</h1>
           </div>
         </div>
-        <div style="flex: 1 1 0%;">
+        <div style="flex: 1 1 0%">
           <header-menu />
         </div>
         <div class="global-header-right">
@@ -49,15 +49,14 @@
 <script>
 import { title } from '@/config'
 
-import Setting from './Setting'
 import Screenfull from '@/components/Screenfull'
+import { mapGetters } from 'vuex'
+import Setting from './Setting'
 import HeaderAvatar from './HeaderAvatar'
 import HeaderMenu from './HeaderMenu'
 
 import Breadcrumb from './Breadcrumb'
 import TagsView from './TagsView'
-
-import { mapGetters } from 'vuex'
 
 export default {
   components: { Screenfull, Setting, HeaderAvatar, Breadcrumb, TagsView, HeaderMenu },

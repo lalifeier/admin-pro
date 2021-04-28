@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="side-menu side-menu-horizontal" style="height: 48px; overflow: hidden;">
+    <div class="side-menu side-menu-horizontal" style="height: 48px; overflow: hidden">
       <el-menu :router="false" :default-active="activeMenu" mode="horizontal" style="">
         <side-menu
           v-for="route in permission_routes"
@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import SideMenu from '../../SideMenu/SideMenu'
 import { mapGetters } from 'vuex'
+import SideMenu from '../../SideMenu/SideMenu'
 
 export default {
   components: { SideMenu },

@@ -7,13 +7,12 @@ import router from '@/router'
 
 import qs from 'qs'
 
+import { timeout } from '@/config'
 import { showFullScreenLoading, tryHideFullScreenLoading } from './full-screen-loading'
 
 import { addPendingRequest, removePendingRequest } from './cancel'
 import { cacheAdapterEnhancer } from './cache'
 import { retryAdapterEnhancer } from './retry'
-
-import { timeout } from '@/config'
 
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API,
@@ -55,15 +54,14 @@ function refreshToken(isRefreshing, requests, config) {
       .finally(() => {
         isRefreshing = false
       })
-  } else {
-    return new Promise((resolve) => {
-      requests.push((token) => {
-        config.baseURL = ''
-        config.headers.Authorization = token
-        resolve(axios(config))
-      })
-    })
   }
+  return new Promise((resolve) => {
+    requests.push((token) => {
+      config.baseURL = ''
+      config.headers.Authorization = token
+      resolve(axios(config))
+    })
+  })
 }
 
 service.interceptors.request.use(
@@ -94,7 +92,7 @@ service.interceptors.response.use(
     removePendingRequest(response.config)
 
     if (response.headers.refresh_token) {
-      const config = response.config
+      const { config } = response
       return refreshToken(isRefreshing, requests, config)
     }
 
@@ -128,7 +126,7 @@ service.interceptors.response.use(
     removePendingRequest(error.config)
 
     if (axios.isCancel(error)) {
-      console.log('已取消的重复请求：' + error.message)
+      console.log(`已取消的重复请求：${error.message}`)
     } else {
       Message({
         message: error.message,
@@ -170,7 +168,7 @@ export function requestPostFormData(url, data) {
 export function requestGetDownloadProcess(url, data, downloadProcess) {
   return service({
     timeout: 10000 * 60, // 请求超时时间
-    url: url,
+    url,
     method: 'get',
     params: data,
     headers: { 'Content-Type': 'application/octet-stream;charset=utf-8' },

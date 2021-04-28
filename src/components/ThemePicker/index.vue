@@ -8,7 +8,8 @@
 </template>
 
 <script>
-const version = require('element-ui/package.json').version // element-ui version from node_modules
+const { version } = require('element-ui/package.json')
+// element-ui version from node_modules
 const ORIGINAL_THEME = '#409EFF' // default color
 
 export default {
@@ -25,7 +26,7 @@ export default {
   },
   watch: {
     defaultTheme: {
-      handler: function (val, oldVal) {
+      handler(val, oldVal) {
         this.theme = val
       },
       immediate: true,
@@ -105,17 +106,16 @@ export default {
         if (tint === 0) {
           // when primary color is in its rgb space
           return [red, green, blue].join(',')
-        } else {
-          red += Math.round(tint * (255 - red))
-          green += Math.round(tint * (255 - green))
-          blue += Math.round(tint * (255 - blue))
-
-          red = red.toString(16)
-          green = green.toString(16)
-          blue = blue.toString(16)
-
-          return `#${red}${green}${blue}`
         }
+        red += Math.round(tint * (255 - red))
+        green += Math.round(tint * (255 - green))
+        blue += Math.round(tint * (255 - blue))
+
+        red = red.toString(16)
+        green = green.toString(16)
+        blue = blue.toString(16)
+
+        return `#${red}${green}${blue}`
       }
 
       const shadeColor = (color, shade) => {

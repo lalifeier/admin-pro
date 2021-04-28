@@ -45,14 +45,14 @@ export default {
         checked: this.isChecked,
       }
       this.$emit('change', option)
-      const groupContext = this.groupContext
+      const { groupContext } = this
       if (groupContext) {
         groupContext.handleChange(option)
       }
     },
   },
   created() {
-    const groupContext = this.groupContext
+    const { groupContext } = this
     if (groupContext) {
       this.isChecked =
         groupContext.defaultValues.length > 0 ? groupContext.defaultValues.includes(this.value) : this.isChecked
@@ -66,14 +66,14 @@ export default {
       }
     },
     initChecked() {
-      const groupContext = this.groupContext
+      const { groupContext } = this
       if (!groupContext) {
         return this.checked
-      } else if (groupContext.multiple) {
-        return groupContext.defaultValues.includes(this.value)
-      } else {
-        return groupContext.defaultValues[0] === this.value
       }
+      if (groupContext.multiple) {
+        return groupContext.defaultValues.includes(this.value)
+      }
+      return groupContext.defaultValues[0] === this.value
     },
   },
 }

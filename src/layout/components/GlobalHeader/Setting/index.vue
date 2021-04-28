@@ -39,7 +39,7 @@
         <div class="setting-list">
           <div class="setting-list-item">
             <span>内容区域宽度</span>
-            <el-select :value="wideType" style="width: 100px;" size="mini" @change="changeWideType">
+            <el-select :value="wideType" style="width: 100px" size="mini" @change="changeWideType">
               <el-option v-if="menuType === 'head'" value="wide" label="固定"></el-option>
               <el-option value="flow" label="流式"></el-option>
             </el-select>
@@ -71,7 +71,7 @@
               <span>动画效果</span>
               <el-select
                 :value="animate.name"
-                style="width: 100px;"
+                style="width: 100px"
                 size="mini"
                 @change="(val) => handleChangeAnimate({ ...animate, name: val })"
               >
@@ -87,7 +87,7 @@
               <span>动画方向</span>
               <el-select
                 :value="animate.direction"
-                style="width: 100px;"
+                style="width: 100px"
                 size="mini"
                 @change="(val) => handleChangeAnimate({ ...animate, direction: val })"
               >
@@ -103,12 +103,12 @@
 
 <script>
 import { ImgCheckbox, ImgCheckboxGroup, ColorCheckbox, ColorCheckboxGroup } from '@/components/checkbox'
-import SettingItem from './SettingItem'
 import { mapGetters } from 'vuex'
 
 import { PALETTES, ANIMATES } from '@/utils/constants'
 
 import { changeColor } from '@/utils/themeColorClient'
+import SettingItem from './SettingItem'
 
 export default {
   components: { SettingItem, ImgCheckbox, ImgCheckboxGroup, ColorCheckbox, ColorCheckboxGroup },

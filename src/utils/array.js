@@ -15,20 +15,20 @@ export function uniqWith(arr, key) {
 export function compareAsc(x, y) {
   if (x < y) {
     return -1
-  } else if (x > y) {
-    return 1
-  } else {
-    return 0
   }
+  if (x > y) {
+    return 1
+  }
+  return 0
 }
 export function compareDesc(x, y) {
   if (x < y) {
     return 1
-  } else if (x > y) {
-    return -1
-  } else {
-    return 0
   }
+  if (x > y) {
+    return -1
+  }
+  return 0
 }
 
 export function compareWith(prop) {
@@ -41,11 +41,11 @@ export function compareWith(prop) {
     }
     if (val1 < val2) {
       return -1
-    } else if (val1 > val2) {
-      return 1
-    } else {
-      return 0
     }
+    if (val1 > val2) {
+      return 1
+    }
+    return 0
   }
 }
 

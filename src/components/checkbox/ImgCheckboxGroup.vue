@@ -1,5 +1,5 @@
 <template>
-  <div style="display: flex;">
+  <div style="display: flex">
     <slot />
   </div>
 </template>
@@ -48,10 +48,8 @@ export default {
             }
           })
         }
-      } else {
-        if (this.values.includes(option.value)) {
-          this.values = this.values.filter((item) => item !== option.value)
-        }
+      } else if (this.values.includes(option.value)) {
+        this.values = this.values.filter((item) => item !== option.value)
       }
     },
   },

@@ -157,7 +157,7 @@ export default {
       this.data = fileChunkList.map(({ file }, index) => ({
         fileHash: this.container.hash,
         index,
-        hash: this.container.hash + '-' + index,
+        hash: `${this.container.hash}-${index}`,
         chunk: file,
         size: file.size,
         percentage: uploadedList.includes(index) ? 100 : 0,

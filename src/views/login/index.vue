@@ -139,7 +139,7 @@ export default {
     },
     async handleLogin() {
       await this.$store.dispatch('user/login')
-      const redirect = this.$route.query.redirect
+      const { redirect } = this.$route.query
       this.$router.push({ path: redirect || '/' }).catch((err) => {
         console.log(err)
       })

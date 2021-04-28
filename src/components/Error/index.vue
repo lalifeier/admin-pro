@@ -1,5 +1,5 @@
 <template>
-  <div class="result" style="background: none;">
+  <div class="result" style="background: none">
     <div class="result-icon result-image">
       <img :src="require('../../assets/img/' + config.img)" />
     </div>
@@ -20,7 +20,7 @@ export default {
     config: {
       type: Object,
       require: false,
-      default: function () {
+      default() {
         return {
           img: '',
           title: '',

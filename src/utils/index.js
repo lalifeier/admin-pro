@@ -9,11 +9,11 @@ export function formatDate(date = new Date(), fmt = 'yyyy-MM-dd hh:mm:ss') {
     S: date.getMilliseconds(),
   }
   if (/(y+)/.test(fmt)) {
-    fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length))
+    fmt = fmt.replace(RegExp.$1, `${date.getFullYear()}`.substr(4 - RegExp.$1.length))
   }
   for (const k in o) {
-    if (new RegExp('(' + k + ')').test(fmt)) {
-      fmt = fmt.replace(RegExp.$1, RegExp.$1.length === 1 ? o[k] : ('00' + o[k]).substr(('' + o[k]).length))
+    if (new RegExp(`(${k})`).test(fmt)) {
+      fmt = fmt.replace(RegExp.$1, RegExp.$1.length === 1 ? o[k] : `00${o[k]}`.substr(`${o[k]}`.length))
     }
   }
   return fmt
@@ -40,7 +40,7 @@ export function uuidv4() {
 
 export function getRandomFileName() {
   const timestamp = new Date().toISOString().replace(/[-:.]/g, '')
-  const random = ('' + Math.random()).substring(2, 8)
+  const random = `${Math.random()}`.substring(2, 8)
   const random_number = timestamp + random
   return random_number
 }
@@ -77,7 +77,7 @@ export function escapeString(str) {
       case '\x1a':
         return '\\Z'
       default:
-        return '\\' + s
+        return `\\${s}`
     }
   })
 }

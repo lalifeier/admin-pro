@@ -31,6 +31,7 @@
 
 <script>
 import { test } from '@/api/user'
+
 export default {
   methods: {
     async handleSearch() {

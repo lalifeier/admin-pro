@@ -1,6 +1,5 @@
-import { generateReqKey } from './helper'
-
 import LRUCache from 'lru-cache'
+import { generateReqKey } from './helper'
 
 // const MemoryCache = {
 //   data: {},

@@ -18,6 +18,7 @@
 import zTree from '@/components/zTree'
 
 const bigData = require('./big-tree.json')
+
 const simpleData = [
   { id: 1, pid: 0, name: '随意勾选 1', open: true },
   { id: 11, pid: 1, name: '随意勾选 1-1', open: true },
@@ -66,7 +67,7 @@ export default {
     }
   },
   computed: {
-    nodes: function () {
+    nodes() {
       return dataQueue[this.showIndex]
     },
   },
@@ -99,20 +100,20 @@ export default {
       console.log('remove', treeNode)
       this.ztreeObj && this.ztreeObj.removeNode(treeNode)
     },
-    onClick: function (evt, treeId, treeNode) {
+    onClick(evt, treeId, treeNode) {
       // 点击事件
       console.log(evt.type, treeNode)
     },
-    onCheck: function (evt, treeId, treeNode) {
+    onCheck(evt, treeId, treeNode) {
       // 选中事件
       console.log(evt.type, treeNode)
     },
-    handleCreated: function (ztreeObj) {
+    handleCreated(ztreeObj) {
       // this.ztreeObj = ztreeObj
       // onCreated 中操作ztreeObj对象展开第一个节点
       // ztreeObj.expandNode(ztreeObj.getNodes()[0], true)
     },
-    update: function () {
+    update() {
       // 更新示例数据
       this.showIndex = this.showIndex === 0 ? 1 : 0
     },

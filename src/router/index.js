@@ -50,7 +50,7 @@ router.beforeEach(async (to, from, next) => {
 
   const token = cookies.get(ACCESS_TOKEN)
   if (token) {
-    const roles = store.getters.roles
+    const { roles } = store.getters
     if (roles.length > 0) {
       next()
       return
@@ -71,12 +71,10 @@ router.beforeEach(async (to, from, next) => {
       console.log(error)
       next({ name: 'login', query: { redirect: to.fullPath } })
     }
+  } else if (routerWhiteList.indexOf(to.path) !== -1) {
+    next()
   } else {
-    if (routerWhiteList.indexOf(to.path) !== -1) {
-      next()
-    } else {
-      next({ name: 'login', query: { redirect: to.fullPath } })
-    }
+    next({ name: 'login', query: { redirect: to.fullPath } })
   }
 })
 

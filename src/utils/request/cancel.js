@@ -1,6 +1,5 @@
-import { generateReqKey } from './helper'
-
 import axios from 'axios'
+import { generateReqKey } from './helper'
 
 const pendingRequest = new Map()
 export function addPendingRequest(config) {

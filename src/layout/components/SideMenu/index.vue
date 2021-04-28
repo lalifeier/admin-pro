@@ -36,8 +36,8 @@
 
 import { title } from '@/config'
 
-import SideMenu from './SideMenu'
 import { mapGetters } from 'vuex'
+import SideMenu from './SideMenu'
 
 export default {
   components: { SideMenu },

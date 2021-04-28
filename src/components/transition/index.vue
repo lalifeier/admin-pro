@@ -86,7 +86,7 @@ export default {
         direction = direction[0].toUpperCase() + direction.substring(1)
       }
       const t = isLeave ? 'Out' : 'In'
-      return 'animate__' + this.animate + t + direction
+      return `animate__${this.animate}${t}${direction}`
     },
     reversePosition(direction, directions) {
       if (direction.length === 0 || direction === 'x' || direction === 'y') {

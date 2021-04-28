@@ -122,7 +122,7 @@ export async function downloadByUrl2(url, filename, method = 'GET', body = '') {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: body,
+      body,
     })
   }
   const res = await fetch(params)
