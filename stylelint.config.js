@@ -2,7 +2,6 @@ module.exports = {
   defaultSeverity: 'error',
   extends: ['stylelint-config-standard', 'stylelint-config-rational-order', 'stylelint-prettier/recommended'],
   plugins: ['stylelint-scss'],
-  ignoreFiles: ['**/*.js'],
   rules: {
     'media-feature-name-no-vendor-prefix': true,
     'at-rule-no-vendor-prefix': true,
